@@ -23,12 +23,15 @@ router.get('/',(req,res,next)=>{
 
 /* POST user info. */
 router.post('/',upload.single('image'),function(req, res, next){
-  console.log(req.body);
-  //let file = req.file;
+  //console.log(req.file);
+  let file = req.file;
+  if(!file){
+    return res.send("file undefined");
+  }
 
   let name = req.body['name'];
   let email = req.body['e-mail'];
-  let image_path = "dummy";
+  let image_path = file.filename;
 
   
   //save user in mongoDB
@@ -39,11 +42,11 @@ router.post('/',upload.single('image'),function(req, res, next){
   })
   newUser.save((err)=>{
     if(err){
-      res.send(err);
+      return res.send(err);
     }
     else{
-      res.send("success");
       console.log('saved user.');
+      return res.send("success");
     }
   });
   
