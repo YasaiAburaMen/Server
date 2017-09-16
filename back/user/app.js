@@ -5,6 +5,17 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+//mongoDB
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/user-hack', {
+  useMongoClient: true,
+  /* other options */
+},(err)=>{
+  if(err) console.error(err);
+  else console.log('DB is connected.');
+});
+
 var index = require('./routes/index');
 var users = require('./routes/users');
 
