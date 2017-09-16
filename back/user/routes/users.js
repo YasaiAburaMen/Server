@@ -1,20 +1,34 @@
 var express = require('express');
 var router = express.Router();
+// file upload
+const multer = require('multer');
 // load model
 const User = require('../schemas/user-schema');
 
-/* Get users listing. */
+// setting multer
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, __dirname + '/../public/images');
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname);
+  }
+})
+const upload = multer({storage: storage});
+
+/* Get users. */
 router.get('/',(req,res,next)=>{
   //response all user.
 })
 
-/* POST users listing. */
-router.post('/', function(req, res, next){
+/* POST user info. */
+router.post('/',upload.single('image'),function(req, res, next){
   console.log(req.body);
-  let query = JSON.parse(JSON.stringify(req.body));
-  let name = query['name'];
-  let email = query['e-mail'];
-  let image_path = "dummy"; //後で画像アップロードに対応します。
+  //let file = req.file;
+
+  let name = req.body['name'];
+  let email = req.body['e-mail'];
+  let image_path = "dummy";
 
   
   //save user in mongoDB
@@ -32,6 +46,7 @@ router.post('/', function(req, res, next){
       console.log('saved user.');
     }
   });
+  
 });
 
 module.exports = router;
