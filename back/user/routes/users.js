@@ -51,13 +51,13 @@ router.post('/',upload.single('image'),function(req, res, next){
         }
         else{
           console.log('saved user.');
-          return res.send("success");
+          return res.redirect("success.html");
         }
       });
     }
     else{ //emailが既に登録されていたら
       bef_image_path = findUser.image_path;
-      //update the memo in DB
+      //update the user in DB
       User.update({email: email},
         {$set: {
             image_path: image_path
@@ -67,7 +67,7 @@ router.post('/',upload.single('image'),function(req, res, next){
           }
           else{
             //bef_imagepathとimage_pathの画像をレスポンスする？
-            return res.send("success");
+            return res.redirect("success.html");
           }
         });
     }
