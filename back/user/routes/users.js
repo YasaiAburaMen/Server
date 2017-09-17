@@ -49,11 +49,11 @@ router.post('/',upload.single('image'),function(req, res, next){
       })
       newUser.save((err)=>{
         if(err){
-          return res.send(err);
+          return res.render("index",{success_message: "登録に失敗しました。"});
         }
         else{
           console.log('saved user.');
-          return res.redirect("success.html");
+          return res.render("index",{success_message: "登録完了です。"});
         }
       });
     }
@@ -68,9 +68,8 @@ router.post('/',upload.single('image'),function(req, res, next){
             return res.send(err);
           }
           else{
-            const result =  execSync('ls ' + __dirname +'/../public/images').toString();
-            console.log(result);
-            return res.redirect("success.html");
+            const path_name =  'images/'+execSync('python face_diff.py "pic1.jpg" "pic2.jpg"').toString();
+            return res.render("result",{name: name,path_name: path_name});
           }
         });
     }
