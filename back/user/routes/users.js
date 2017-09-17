@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+// execute command line
+const execSync = require('child_process').execSync;
 // file upload
 const multer = require('multer');
 // load model
@@ -66,7 +68,8 @@ router.post('/',upload.single('image'),function(req, res, next){
             return res.send(err);
           }
           else{
-            //bef_imagepathとimage_pathの画像をレスポンスする？
+            const result =  execSync('ls ' + __dirname +'/../public/images').toString();
+            console.log(result);
             return res.redirect("success.html");
           }
         });
