@@ -50,14 +50,9 @@
 </div>
 <div class="container">
  <p class="success" style="display:none;">登録を完了しました！</p>
-  <div class="row text-center input-group">
-    <form method="post", enctype='multipart/form-data', action="http://localhost:3888/users" >
-    <input class="form-control" name="e-mail" type="email" placeholder="Your E-mail Address" required></input>
-    <!--<input class="form-control" name="" type="email" placeholder="Target's E-mail Address" required></input>-->
-    <input class="form-control" name="name" type="text" placeholder="Target's name" required></input>
-	<input class="form-control" name="image" accept="image/*" type="file" required></input>
-    <button class="btn btn-default" type="submit">Submit</button></form>
-    <!-- <textarea id="response" cols=120 rows=10 style="display:none;"></textarea>-->
+  <div class="row text-center">
+  <p>さんの差分</p>
+	  <img id="result_image"></img>
   </div>
   <hr>
   <div class="row">
