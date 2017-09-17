@@ -68,7 +68,7 @@ router.post('/',upload.single('image'),function(req, res, next){
             return res.send(err);
           }
           else{
-            const path_name =  'images/'+execSync('python3 face_diff.py '+bef_image_path+' '+image_path+' diff.jpg').toString();
+            const path_name =  'images/'+execSync('python3 face_diff.py '+'./public/images/'+bef_image_path+' ./public/images/'+image_path+' ./public/images/diff.jpg').toString();
             return res.render("result",{name: name,path_name: path_name});
           }
         });
