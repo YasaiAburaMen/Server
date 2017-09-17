@@ -19,7 +19,9 @@ html(lang="ja")
         span(class="icon-bar")
         span(class="icon-bar")
         span(class="icon-bar")
-        a(class="navbar-brand" href="#") どこが変わったんじゃー
+        a(class="navbar-brand" href="#" style="color:white;") どこが変わったんじゃー
+        div(class="navbar-right container-fluid")
+            h4(style="color:white;") ヤサイスクナメアブラカラメメンカタメ
     div(class="collapse navbar-collapse" id="defaultNavbar1")
       ul(class="nav navbar-nav")  
     div(class="container-fluid")
@@ -32,16 +34,15 @@ html(lang="ja")
       //- 登録を完了しました！
     div(class="row") 
       div(class="text-center input-group")
-        div(class="col-md-offset-3 col-md-6")
+        div(class="col-md-offset-2 col-md-8")
             form(method="post", enctype='multipart/form-data', action="http://localhost:3888/users")
                 input(class="form-control" name="e-mail" type="email" placeholder="Your E-mail Address" required)
                 input(class="form-control" name="name" type="text" placeholder="Target's name" required)
                 input(class="form-control" name="image" accept="image/*" type="file" required)
-                button(class="btn btn-default" type="submit") Submit
+                button(class="btn btn-default submit pull-right" type="submit") Submit
     hr
     div(class="row")
     div(class="text-center col-md-6 col-md-offset-3")
-      h4 Footer
       p Copyright &copy; 2015 &middot; All Rights Reserved &middot; \
         a(href="http://yourwebsite.com/") ヤサイスクナメアブラカラメメンカタメ
     
