@@ -30,12 +30,14 @@ html(lang="ja")
     div(class="container")
       p(class="success")= success_message
       //- 登録を完了しました！
-    div(class="row text-center input-group")
-      form(method="post", enctype='multipart/form-data', action="http://localhost:3888/users")
-        input(class="form-control" name="e-mail" type="email" placeholder="Your E-mail Address" required)
-        input(class="form-control" name="name" type="text" placeholder="Target's name" required)
-	    input(class="form-control" name="image" accept="image/*" type="file" required)
-        button(class="btn btn-default" type="submit") Submit
+    div(class="row") 
+      div(class="text-center input-group")
+        div(class="col-md-offset-3 col-md-6")
+            form(method="post", enctype='multipart/form-data', action="http://localhost:3888/users")
+                input(class="form-control" name="e-mail" type="email" placeholder="Your E-mail Address" required)
+                input(class="form-control" name="name" type="text" placeholder="Target's name" required)
+                input(class="form-control" name="image" accept="image/*" type="file" required)
+                button(class="btn btn-default" type="submit") Submit
     hr
     div(class="row")
     div(class="text-center col-md-6 col-md-offset-3")
